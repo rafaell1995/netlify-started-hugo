@@ -10,15 +10,18 @@ slug:
   sanitize_replacement: "-"
 
 collections:
-  - name: 'blog'
-    label: 'Blog'
-    folder: 'content/blog'
+  - name: blog
+    label: Blog
+    folder: content/
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    editor:
-      preview: false
+    slug: '{{slug}}'
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Título do post', name: 'title', widget: 'string', hint: 'Recomendação: Entre 40 a 90 caractéres.', required: true }
+      - { label: 'Descrição', name: 'description', widget: 'string', hint: 'Resumo do post. Aparecerá no índice, feed e também como meta-descrição. Recomendação: Entre 90 a 140 caractéres.', required: true }
+      - { label: 'Permalink', name: 'slug', widget: 'string', pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$','O permalink não pode conter espaços e caractéres especiais.'], hint: 'Campo opcional | URL da página. Utilize hífen no lugar de espaços e SUBSTITUA caractéres especiais. Ex: divulgacao-da-minha-noticia.', required: false }
+      - { label: "Categorias", name: "categories", widget: "select", multiple: true, options: ["Cotidiano", "Saúde", "Imprensa"], default: ["Cotidiano"], hint: 'Selecione uma categoria.', required: true }
+      - { label: 'Tipo de conteúdo', name: 'type', widget: 'hidden', default: "post" }
+      - { label: 'Imagem', name: 'image', widget: 'image', hint: 'Recomendação: 1200x700 pixels. Aplicativo para otimizar a imagem: https://squoosh.app/.' }
+      - { label: 'Data de publicação', name: 'date', widget: 'date', required: true }
+      - { label: 'Rascunho', name: 'draft', widget: 'boolean', hint: 'Caso deseje manter o post como rascunho, ative a opção acima.', default: false }
+      - { label: 'Conteúdo', name: 'body', widget: 'markdown', required: true }
