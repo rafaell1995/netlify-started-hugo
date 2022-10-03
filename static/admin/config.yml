@@ -1,6 +1,8 @@
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
+site_url: https://started-hugo.netlify.app/
+
 media_folder: static/blog
 public_folder: /blog
 
