@@ -7,6 +7,10 @@
 
 <body>
 
+  {{ block "header" . }}
+  {{ partial "header" . }}
+  {{ end }}
+
   <main id="main">
     {{ block "main" . }}
     {{ end }}
