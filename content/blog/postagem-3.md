@@ -1,6 +1,7 @@
 ---
 title: Postagem 3
 description: asdasdasd
+slug: postagem-3
 categories:
   - Cotidiano
 type: post
