@@ -17,11 +17,12 @@
   
       <div class="grid -three-columns">
 
-        {{ range .Pages }}
+        {{ range where .Pages "Type" "post" }}
           <li>
             <h1>{{ .Title }}</h1>
           </li>
         {{ end }}  
+
       </div>
   
     </div>

@@ -1,6 +1,6 @@
 ---
 title: "Blog"
 description: "Escrevo artigos sobre Lorem Ipsum"
-type: "page"
+type: "post"
 draft: false
 ---
