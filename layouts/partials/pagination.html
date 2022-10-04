@@ -1,0 +1,49 @@
+{{ $pag := $.Paginator }}
+{{ if gt $pag.TotalPages 1 }}
+
+<nav aria-label="Navegação entre páginas">
+    <ul class="pagination">
+        <!-- Don't show on 1st and 2nd page -->
+        {{ if and (ne $pag.PageNumber 1) }}
+        <li class="pagination__item">
+            <a class="pagination__link" href="{{ $pag.First.URL }}#feed" rel="first">«</a>
+        </li>
+        {{ end }}
+
+        {{ if $pag.HasPrev }}
+        <li class="pagination__item pagination__prev">
+            <a class="pagination__link" href="{{ $pag.Prev.URL }}#feed" rel="prev">‹</a>
+        </li>
+        {{ end }}
+
+        {{ range $pag.Pagers }}
+        {{ if eq . $pag }}
+        <!-- Current Page -->
+        <li class="pagination__item -active">
+            <a class="pagination__link" href="{{ .URL }}#feed">{{ .PageNumber }}</a>
+        </li>
+        {{ else if and (ge .PageNumber (sub $pag.PageNumber 1)) (le .PageNumber (add $pag.PageNumber 1)) }}
+        <!-- Render prev page and next page -->
+        <li class="pagination__item">
+            <a class="pagination__link" href="{{ .URL }}#feed">{{ .PageNumber }}</a>
+        </li>
+        <!-- render skip pages -->
+
+        {{ end }}
+        {{ end }}
+
+        {{ if $pag.HasNext }}
+        <li class="pagination__item pagination__next">
+            <a class="pagination__link" href="{{ $pag.Next.URL }}#feed" rel="next">›</a>
+        </li>
+        {{ end }}
+
+        <!-- Don't show on last and 2nd last page -->
+        {{ if and (ne $pag.PageNumber $pag.TotalPages) ((ne $pag.PageNumber (sub $pag.TotalPages 1))) }}
+        <li class="pagination__item">
+            <a class="pagination__link" href="{{ $pag.Last.URL }}#feed" rel="last">»</a>
+        </li>
+        {{ end }}
+    </ul>
+</nav>
+{{ end }}

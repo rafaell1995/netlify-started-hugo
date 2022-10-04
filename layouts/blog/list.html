@@ -1,0 +1,47 @@
+{{ define "main" }}
+
+<section class="section -boxed">
+  <div class="box -bg-primary">
+    <div class="content -align-center -align-end-desk">
+      <h1 class="title -large">Blog sobre Psicologia</h1>
+    </div>
+    <div class="content -align-center -align-start-desk">
+      <p>Escrevo artigos sobre Lorem Ipsum</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section blog" id="feed">
+    <div class="container">
+  
+      <div class="grid -three-columns">
+        {{ $query := slice }}
+        {{ range where .Site.Pages "Type" "post" }}
+          {{ if not (in .Params.categories "Imprensa") }}
+            {{ $query = $query | append . }}
+          {{ end }}  
+        {{ end }}  
+
+        {{ $paginator := .Paginate $query }}
+        {{ range $paginator.Pages }}
+        <article class="card content -small-gap">
+            <a class="card__link" href="{{.Permalink}}">
+                <div class="card__cover" style="background-image: url('{{.Params.image}}')"></div>              
+                <p class="card__date">{{ partial "date" .PublishDate }}</p>
+                <h2 class="card__title">{{.Title }}</h2>
+            </a>
+        </article>
+        {{ end }}  
+      </div>
+      
+      <div class="content -align-center">
+        {{ partial "pagination" . }}
+      </div>
+  
+    </div>
+  </section>
+
+{{ end }}
+
+

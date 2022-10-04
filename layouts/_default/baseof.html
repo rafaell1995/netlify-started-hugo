@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-br" {{ if .Params.faq }} itemscope itemtype="https://schema.org/FAQPage" {{ end }}>
+
+<head>
+  {{ partial "head" . }}
+</head>
+
+<body>
+
+  <main id="main">
+    {{ block "main" . }}
+    {{ end }}
+  </main>
+      
+</body>
+</html>

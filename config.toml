@@ -1,3 +1,8 @@
 baseURL = 'https://started-hugo.netlify.app/'
-languageCode = 'en-us'
+languageCode = 'pt-BR'
 title = 'Started Hugo Netlify'
+languageName = "Português Brasileiro"
+
+disableHugoGeneratorInject = true
+enableRobotsTXT = true
+preserveTaxonomyNames = true
