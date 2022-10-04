@@ -2,7 +2,7 @@
 title: Quarto Post
 description: "Lorem Ipsum is simply dummy text of the printing and typesetting
   industry. Lorem Ipsum has been the "
-slug: segundo-post
+slug: quarto-post
 categories:
   - Saúde
 type: post
