@@ -18,9 +18,11 @@
       <div class="grid -three-columns">
 
         {{ range where .Pages "Type" "post" }}
-          <li>
+          <div class="card">
             <h1>{{ .Title }}</h1>
-          </li>
+            <p>{{ .Description }}</p>
+            <a href="{{.Permalink}}">Saiba mais</a>
+          </div>
         {{ end }}  
 
       </div>
