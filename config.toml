@@ -6,3 +6,4 @@ languageName = "Português Brasileiro"
 disableHugoGeneratorInject = true
 enableRobotsTXT = true
 preserveTaxonomyNames = true
+Paginate = 3
