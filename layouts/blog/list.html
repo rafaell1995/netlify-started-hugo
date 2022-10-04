@@ -17,7 +17,8 @@
   
       <div class="row">
 
-        {{ range where .Site.Pages "Type" "post" }}
+        {{ $paginator := .Paginate (where .Pages "Type" "post") }}
+        {{ range $paginator.Pages }}
           <div class="col-sm-12 col-md-4 col-lg-4">
             <div class="card">
               <div class="image-box">
@@ -28,7 +29,11 @@
               <a href="{{.Permalink}}">Saiba mais</a>
             </div>
           </div>
-        {{ end }}  
+        {{ end }}
+
+        <div class="content -align-center">
+          {{ partial "pagination" . }}
+        </div>
 
       </div>
   
